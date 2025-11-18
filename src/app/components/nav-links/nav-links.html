@@ -1,0 +1,28 @@
+<li>
+  <a routerLink="" [routerLinkActive]="disableActive() ? 'link' : 'menu-active link'"
+    [routerLinkActiveOptions]="{ exact: true }">
+    {{ translate.t('navbar.inicio') }}
+  </a>
+</li>
+<li>
+  <a routerLink="habitaciones" [routerLinkActive]="disableActive() ? 'link' : 'menu-active link'">
+    {{ translate.t('navbar.habitaciones') }}
+  </a>
+</li>
+<li>
+  <a routerLink="contacto" [routerLinkActive]="disableActive() ? 'link' : 'menu-active link'">
+    {{ translate.t('navbar.contacto') }}
+  </a>
+</li>
+<li>
+  <a routerLink="turismo" [routerLinkActive]="disableActive() ? 'link' : 'menu-active link'">
+    {{ translate.t('navbar.turismo') }}
+  </a>
+</li>
+<li>
+  <a onclick="modal_redes.showModal()" class="cursor-pointer">
+    {{ translate.t('navbar.redes') }}
+  </a>
+</li>
+
+

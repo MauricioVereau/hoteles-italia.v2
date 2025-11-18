@@ -1,0 +1,233 @@
+<!-- DATOS DEL CONSUMIDOR -->
+<form [formGroup]="reclamoForm" class="space-y-5">
+
+  <fieldset class="fieldset bg-base-300 border-base-300 rounded-box w-full border p-4 mt-4">
+    <legend class="fieldset-legend text-lg">
+      <h4 class="font-bold mt-2 text-lg border-b pb-1">{{translate.t('reclamoForm.tituloLugarFecha')}}</h4>
+    </legend>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-0 items-start">
+
+      <!-- Radios de sede -->
+      <div class="flex flex-col gap-2 items-center md:items-start">
+        <label class="font-semibold mb-1 text-neutral">{{translate.t('reclamoForm.sedeLabel')}}</label>
+        <div class="flex flex-row md:flex-col gap-4">
+          <label class="label cursor-pointer flex items-center gap-2">
+            <input type="radio" formControlName="sede" class="radio radio-primary" value="Arica" />
+            <span>Arica</span>
+          </label>
+          <label class="label cursor-pointer flex items-center gap-2">
+            <input type="radio" formControlName="sede" class="radio radio-primary" value="7 de Enero" />
+            <span>7 de Enero</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Fecha Reclamo(Muestro Fecha pero la seteo en el payload) -->
+      <div class="flex flex-col items-center">
+        <label class="font-semibold mb-1 text-neutral">{{translate.t('reclamoForm.fechaLabel')}}</label>
+        <div class="grid auto-cols-max grid-flow-col gap-3 text-center">
+          <div class="bg-primary rounded-box text-neutral-content flex flex-col items-center p-2">
+            <span class="font-mono text-4xl">
+              <span>{{ fecha().dia}}</span>
+            </span>
+            <span class="text-sm">{{translate.t('reclamoForm.dia')}}</span>
+          </div>
+          <div class="bg-primary rounded-box text-neutral-content flex flex-col items-center p-2">
+            <span class="font-mono text-4xl">
+              <span>{{ fecha().mes}}</span>
+            </span>
+            <span class="text-sm">{{translate.t('reclamoForm.mes')}}</span>
+          </div>
+          <div class="bg-primary rounded-box text-neutral-content flex flex-col items-center p-2">
+            <span class="font-mono text-4xl">
+              <span>{{ fecha().anio.toString() | slice:-2 }}</span>
+            </span>
+            <span class="text-sm">{{translate.t('reclamoForm.anio')}}</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </fieldset>
+
+  <!-- DATOS DEL CONSUMIDOR -->
+  <fieldset class="fieldset bg-base-300 border-base-300 rounded-box w-full border p-5 md:p-6">
+
+    <legend class="fieldset-legend text-lg mb-2">
+      <h4 class="font-bold mt-2 md-4 text-lg pb-1">
+        {{translate.t('reclamoForm.tituloDatosConsumidor')}}
+      </h4>
+    </legend>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <!-- Tipo Documento -->
+      <div class="flex flex-col" [formGroup]="reclamoForm">
+        <label class="label text-sm font-semibold text-neutral">
+          {{ translate.t('reclamoForm.tipoDocumento') }}
+        </label>
+        <select class="select select-bordered w-full" formControlName="tipoDoc">
+          <option disabled value="">{{ translate.t('reclamoForm.seleccioneTipoDocumento') }}</option>
+          <option value="DNI">{{ translate.t('reclamoForm.dni') }}</option>
+          <option value="Pasaporte">{{ translate.t('reclamoForm.pasaporte') }}</option>
+          <option value="Carnet de Extranjería">{{ translate.t('reclamoForm.carnetExtranjeria') }}</option>
+          <option value="RUC">RUC</option>
+        </select>
+      </div>
+
+      <!-- Número de Documento -->
+      <div class="flex flex-col">
+        <label class="label text-sm font-semibold text-neutral">{{translate.t('reclamoForm.numeroDocumento')}}</label>
+        <input type="text" formControlName="nroDoc" class="input input-bordered w-full" placeholder="Ej: 74581236" />
+      </div>
+
+      <!-- Nombre completo -->
+      <div class="flex flex-col md:col-span-2">
+        <label class="label text-sm font-semibold text-neutral">{{translate.t('reclamoForm.nombreCompleto')}}</label>
+        <input type="text" formControlName="nombre" class="input input-bordered w-full"
+          placeholder="Ej: Juan Pérez García" />
+      </div>
+
+      <!-- Correo electrónico -->
+      <div class="flex flex-col">
+        <label class="label text-sm font-semibold text-neutral">{{translate.t('reclamoForm.correo')}}</label>
+        <input type="email" formControlName="email" class="input input-bordered w-full" placeholder="mail@site.com" />
+      </div>
+
+      <!-- Teléfono -->
+      <div class="flex flex-col">
+        <label class="label text-sm font-semibold text-neutral">{{translate.t('reclamoForm.telefono')}}</label>
+        <input type="tel" formControlName="phone" class="input input-bordered w-full" placeholder="+51 999 999 999" />
+      </div>
+
+      <!-- Dirección (ocupa 2 columnas en escritorio) -->
+      <div class="flex flex-col md:col-span-2">
+        <label class="label text-sm font-semibold text-neutral">{{translate.t('reclamoForm.direccion')}}</label>
+        <input type="text" formControlName="direccion" class="input input-bordered w-full"
+          placeholder="Ej: Av. Los Incas 123, Trujillo" />
+      </div>
+    </div>
+  </fieldset>
+
+  <!-- BIEN O SERVICIO -->
+  <fieldset class="fieldset bg-base-300 border-base-300 rounded-box w-full border p-5 md:p-6">
+    <legend class="fieldset-legend text-lg mb-2">
+      <h4 class="font-bold mt-2 md-4 text-lg pb-1">
+        {{translate.t('reclamoForm.tituloBienServicio')}}
+      </h4>
+    </legend>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <!-- Tipo Servicio -->
+      <div class="flex flex-col">
+        <label class="label text-sm font-semibold text-neutral">{{translate.t('reclamoForm.tipoServicio')}}</label>
+        <select class="select select-bordered w-full" formControlName="tipoServ">
+          <option disabled selected>{{translate.t('reclamoForm.seleccioneTipoServicio')}}</option>
+          <option value="Hospedaje">{{translate.t('reclamoForm.servicioHospedaje')}}</option>
+          <option value="Pago">{{translate.t('reclamoForm.servicioPago')}}</option>
+          <option value="Atención">{{translate.t('reclamoForm.servicioAtencion')}}</option>
+        </select>
+      </div>
+
+      <!-- Monto (S/) -->
+      <div class="flex flex-col">
+        <label class="label text-sm font-semibold text-neutral">{{translate.t('reclamoForm.monto')}}</label>
+        <input type="number" formControlName="monto" step="0.01" class="input input-bordered w-full" />
+      </div>
+
+      <!--Descripción del servicio  -->
+      <div class="flex flex-col md:col-span-2">
+        <label
+          class="label text-sm font-semibold text-neutral">{{translate.t('reclamoForm.descripcionServicio')}}</label>
+        <textarea class="textarea textarea-bordered w-full" formControlName="descServ"></textarea>
+      </div>
+    </div>
+  </fieldset>
+
+  <!-- RECLAMO / QUEJA -->
+  <fieldset class="fieldset bg-base-300 border-base-300 rounded-box w-full border p-5 md:p-6">
+    <legend class="fieldset-legend text-lg mb-2">
+      <h4 class="font-bold mt-2 md-4 text-lg pb-1">
+        {{translate.t('reclamoForm.tituloReclamoQueja')}}
+      </h4>
+    </legend>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <!-- Tipo -->
+      <div class="flex flex-col">
+        <label class="label text-sm font-semibold text-neutral">{{translate.t('reclamoForm.tipo')}}</label>
+        <select class="select select-bordered w-full" formControlName="tipo">
+          <option disabled selected>{{translate.t('reclamoForm.seleccioneTipo')}}</option>
+          <option value="Reclamo">{{translate.t('reclamoForm.reclamo')}}</option>
+          <option value="Queja">{{translate.t('reclamoForm.queja')}}</option>
+        </select>
+      </div>
+
+      <!--Descripción  -->
+      <div class="flex flex-col md:col-span-2">
+        <label class="label text-sm font-semibold text-neutral">{{translate.t('reclamoForm.descripcion')}}</label>
+        <textarea class="textarea textarea-bordered w-full" formControlName="desc"></textarea>
+      </div>
+
+      <div class="flex flex-col md:col-span-2">
+        <label class="label text-sm font-semibold text-neutral">{{translate.t('reclamoForm.pedidoConsumidor')}}</label>
+        <textarea class="textarea textarea-bordered w-full" formControlName="pedidoCli"></textarea>
+      </div>
+
+    </div>
+  </fieldset>
+
+  <!-- CONSENTIMIENTOS -->
+  <div class="space-y-2 mt-6">
+    <label class="flex items-start space-x-2">
+      <input type="checkbox" required class="checkbox checkbox-primary mt-1">
+      <span class="text-sm">{{translate.t('reclamoForm.consentimiento1')}}</span>
+    </label>
+    <label class="flex items-start space-x-2">
+      <input type="checkbox" required class="checkbox checkbox-primary mt-1">
+      <span class="text-sm">{{translate.t('reclamoForm.consentimiento2')}}</span>
+    </label>
+  </div>
+
+  @if (showTurnstile()) {
+  <div class="flex flex-col md:col-span-2 py-4">
+    <app-turnstile (tokenGenerated)="guardarToken($event)" />
+  </div>
+  }
+
+  <!-- BOTÓN -->
+  <div class="text-center mt-8">
+    <button (click)="onSubmit()" type="submit" [disabled]="isDisabled()" [attr.aria-disabled]="isDisabled()"
+      [attr.aria-busy]="isSubmitting() || showTurnstile()"
+      class="btn btn-primary px-8">{{translate.t('reclamoForm.btnEnviar')}}</button>
+  </div>
+
+  <!-- MENSAJE DE CONFIRMACIÓN -->
+  <span id="mensajeExito" class="hidden text-green-600 text-center mt-4 font-medium">
+    {{translate.t('reclamoForm.mensajeExito')}}
+  </span>
+</form>
+
+@if (msgSuccess()) {
+<div class="toast toast-top toast-end z-999 mt-14">
+  <div class="alert alert-success">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    <span>{{ (translate.t('contactForm.msgSuccess')) }}</span>
+  </div>
+</div>
+}
+
+@if (msgError()) {
+<div class="toast toast-top toast-end z-999 mt-14">
+  <div class="alert alert-error">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    <span>{{ (translate.t('contactForm.msgError')) }}</span>
+  </div>
+</div>
+}

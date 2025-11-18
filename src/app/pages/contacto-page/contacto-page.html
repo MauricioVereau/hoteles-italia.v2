@@ -1,0 +1,29 @@
+<section class="flex flex-col xl:min-h-screen">
+  <!-- Bloque del mapa -->
+  <div class="w-full h-[300px] sm:h-[500px] lg:h-[500px] overflow-hidden">
+    <app-mapa />
+  </div>
+  <!-- Bloque de redes -->
+  <div class="relative z-10 flex flex-col items-center justify-center grow py-8 px-4">
+    <div class="mb-6">
+      <h2 class="font-bold text-center">
+        {{ translate.t('redes.title') }}
+      </h2>
+      <p class="text-center">{{ translate.t('redes.subtitle') }}</p>
+    </div>
+    <div class="py-6">
+      <redes-section />
+    </div>
+  </div>
+</section>
+
+<section class="bg-gray-200 py-12 px-4">
+  <div class="max-w-6xl mx-auto bg-white rounded-2xl shadow-lg p-8">
+    <h2
+      class="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-linear-to-r from-neutral-800 to-neutral-600 mb-3 text-center">
+      {{ translate.t('contactForm.title') }}
+    </h2>
+    <p class="text-center mb-8">{{ translate.t('contactForm.subtitle') }}</p>
+    <form-contacto />
+  </div>
+</section>

@@ -1,0 +1,98 @@
+<footer class="bg-black/90 text-gray-400 py-12 px-4 text-sm" role="contentinfo">
+    <div class="max-w-7xl mx-auto space-y-10">
+        <!-- Grid de contenido -->
+         <div class="flex flex-col md:flex-row md:justify-between gap-10 px-10">
+            <!-- Addresses -->
+            <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                <span class="w-full text-lg font-semibold mb-2">{{ translate.t('footer.ubicacion')}}</span>
+                <div class="flex flex-col justify-center md:justify-end gap-10">
+                    <div class="space-y-2">
+                        <address class="not-italic text-sm">
+                            <div class="flex items-center gap-2 justify-center md:justify-start">
+                                <fa-icon [icon]="iconLocation"></fa-icon>
+                                <span>7 de Enero Nº 1374, Chiclayo</span>
+                            </div>
+                        </address>
+                        <div class="flex items-center gap-2 justify-center md:justify-start">
+                            <fa-icon [icon]="iconPhone"></fa-icon>
+                            <a href="tel:+5174205717" class="hover:text-white transition"> (074) 205 717 </a>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <address class="not-italic text-sm">
+                            <div class="flex items-center gap-2 justify-center md:justify-start">
+                                <fa-icon [icon]="iconLocation"></fa-icon>
+                                <span>Arica Nº 1156, Chiclayo</span>
+                            </div>
+                        </address>
+                        <div class="flex items-center gap-2 justify-center md:justify-start">
+                            <fa-icon [icon]="iconPhone"></fa-icon>
+                            <a href="tel:+5174204417" class="hover:text-white transition"> (074) 204 417 </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Informacion Legal -->
+            <div class="flex flex-col items-center md:items-start text-center md:text-left text-base">
+                <span class="w-full text-lg font-semibold mb-2">{{ translate.t('footer.info')}}</span>
+                <!-- Legal links -->
+                <div class="flex flex-col">
+                    <a href="#" target="_blank" rel="noopener noreferrer"
+                        class="text-gray-400 hover:text-white transition cursor-pointer">
+                        {{ translate.t('footer.info2') }}
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer"
+                        class="text-gray-400 hover:text-white transition cursor-pointer">
+                        {{ translate.t('footer.info3') }}
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer"
+                        class="text-gray-400 hover:text-white transition cursor-pointer">
+                        {{ translate.t('footer.info4') }}
+                    </a>
+                </div>
+            </div>
+
+            <nav class="flex flex-col items-center md:items-start text-center md:text-left text-base">
+                <span class="w-full text-lg font-semibold mb-2">{{ translate.t('footer.nav')}}</span>
+                <nav-links class="list-none" [disableActive]="true"/>
+            </nav>
+
+            <!-- Social icons -->
+            <div class="flex flex-col gap-4 items-center justify-center text-center">
+
+                <div class="flex gap-4 justify-center">
+                    <a href="https://www.facebook.com" target="_blank" aria-label="Facebook Hoteles Italia" rel="noopener noreferrer"
+                        class="w-10 h-10 flex items-center justify-center bg-white/10 rounded-full hover:bg-blue-600 text-white transition">
+                        <fa-icon [icon]="iconFb" class="text-xl"></fa-icon>
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" aria-label="Instagram Hoteles Italia" rel="noopener noreferrer"
+                        class="w-10 h-10 flex items-center justify-center bg-white/10 rounded-full hover:bg-pink-500 text-white transition">
+                        <fa-icon [icon]="iconGm" class="text-xl"></fa-icon>
+                    </a>
+                    <a href="#" target="_blank" aria-label="Ubicación Hoteles Italia" rel="noopener noreferrer"
+                        class="w-10 h-10 flex items-center justify-center bg-white/10 rounded-full hover:bg-red-600 text-white transition">
+                        <fa-icon [icon]="iconLocation" class="text-xl"></fa-icon>
+                    </a>
+                </div>
+
+                <div>
+                    <a routerLink="libro-de-reclamaciones" target="_blank" rel="noopener noreferrer" class="transition cursor-pointer">
+                        <img src="assets/img/reclamaciones-logo.webp" alt="Libro de Reclamaciones" class="w-32 h-auto object-contain" loading="lazy">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright  -->
+        <div class="text-center text-xs text-gray-500 border-t border-white/10 pt-6">
+            © {{currentYear}} Hoteles Italia — {{translate.t('footer.derechos') }} <br />
+            <a href="https://mauriciovereau.dev" target="_blank" rel="noopener noreferrer"
+                class="text-gray-300 hover:text-white transition">
+                {{ translate.t('footer.desarrollado') }} Mauricio Vereau
+            </a>
+        </div>
+
+    </div>
+</footer>
+

@@ -1,59 +1,30 @@
-# HotelesItalia
+# 🏨 Hoteles Italia — Web Oficial
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.9.
+Aplicación web desarrollada con **Angular 20**, **TailwindCSS**, **DaisyUI** y **FontAwesome**, diseñada para ofrecer una experiencia moderna y fluida para la reserva de habitaciones y visualización de información hotelera.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🚀 Tecnologías Principales
 
-```bash
-ng serve
-```
+| Tecnología | Versión | Descripción |
+|-------------|----------|--------------|
+| **Angular** | 20.3.x | Framework frontend principal |
+| **TailwindCSS** | 4.1.x | Estilos utilitarios para un diseño responsive |
+| **DaisyUI** | 5.4.x | Componentes estilizados sobre Tailwind |
+| **FontAwesome** | 7.1.x | Íconos vectoriales escalables |
+| **Leaflet** | 1.9.x | Mapas interactivos |
+| **Cally** | 0.8.x | Web component para selección de fechas |
+| **TypeScript** | 5.9.x | Tipado fuerte para Angular |
+| **RxJS** | 7.8.x | Programación reactiva |
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## ⚙️ Requisitos Previos
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Asegúrate de tener instalado:
 
-```bash
-ng generate component component-name
-```
+- **Node.js** (versión LTS recomendada: `>=20.x`)
+- **npm** o **pnpm**
+- (Opcional) **Git**, si se clona desde un repositorio.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---

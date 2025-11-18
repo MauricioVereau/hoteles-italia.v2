@@ -1,0 +1,59 @@
+<div class="max-w-7xl mx-auto px-4">
+  <div class="flex flex-wrap justify-center gap-6 items-stretch">
+    @for (t of tarifas(); track $index) {
+    <div class="relative w-full sm:w-[320px] lg:w-[350px]">
+      <div
+        class="card h-full border border-base-200 rounded-lg shadow-sm transform transition hover:scale-[1.02] bg-white overflow-hidden">
+        <div class="card-body p-6 flex flex-col">
+          <div class="flex items-start justify-between mb-3">
+            <div>
+              <h4 class="text-xl font-semibold">{{ translate.t(t.nombre) }}</h4>
+              <p class="text-sm text-gray-500">{{ translate.t(t.descripcion) }}</p>
+            </div>
+            <div class="text-right">
+              <div class="text-4xl font-bold">{{ t.precio | currency:'PEN':'symbol':'1.0-2' }}</div>
+              <div class="text-xs text-gray-500">/ {{ translate.t('tarifas.noche') }}</div>
+            </div>
+          </div>
+
+          <ul class="mb-4 space-y-2 flex-1 text-sm">
+            @for (b of t.beneficios; track $index) {
+            <li class="flex items-center space-x-3">
+              <svg class="shrink-0 w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0
+               01-1.414 0l-4-4a1 1 0
+               011.414-1.414L8 12.586l7.293-7.293a1 1 0
+               011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              {{ translate.t(b) }}
+            </li>
+            }
+          </ul>
+
+          <div class="mt-4 flex  justify-center">
+            <button (click)="mostrarModalTarifa(t)"
+              class="cursor-pointer flex items-center justify-center gap-2 w-full text-white bg-linear-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 focus:ring-4 focus:ring-green-300 font-semibold rounded-xl text-base px-6 py-3 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-200">
+              <fa-icon [icon]="iconEye" class="text-lg"></fa-icon>
+              {{ translate.t('tarifas.button') }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Badge dinámico -->
+      <div class="absolute -top-3 left-4">
+        <span
+          [class]="'badge px-2 py-1  ' + ($index === 0 ? 'badge-warning' : $index === 1 ? 'badge-success' : 'badge-info') ">
+          {{ translate.t(t.badge) }}
+        </span>
+      </div>
+    </div>
+    }
+  </div>
+
+  <dialog id="room_modal" class="modal"  role="dialog" aria-modal="true" aria-labelledby="tarifa-title">
+    <div class="modal-box w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-xl p-0 bg-base-100 shadow-xl">
+      <tarifas-modal [selected]="selected()!" (cerrar)="cerrarModal()"/>
+    </div>
+  </dialog>
+</div>

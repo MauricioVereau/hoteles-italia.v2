@@ -1,0 +1,33 @@
+<div class="flex flex-col gap-2 justify-center w-fit mx-auto text-center">
+  <p class="text-white text-sm">
+    {{ translate.t(title()) }}
+  </p>
+  <div class="flex flex-wrap gap-2 justify-center">
+    @if (selectedValue()) {
+      <!-- Botón de reset -->
+      <button type="button" class="btn btn-sm btn-outline btn-square" aria-label="Limpiar selección"
+        (click)="onOptionChange('')">
+        ×
+      </button>
+    <!-- Solo el radio seleccionado -->
+      @for (option of options(); track $index) {
+        @if (selectedValue() === option.value) {
+        <label class="btn btn-sm btn-active transition-all duration-200 border-primary bg-primary text-white">
+          <input type="radio" class="sr-only peer" [name]="name()" [value]="option.value" [checked]="true"
+            (change)="onOptionChange(option.value)" />
+          {{ getDisplayLabel(option) }}
+        </label>
+        }
+      }
+    } @else {
+    <!-- Mostrar todos los radios -->
+      @for (option of options(); track $index) {
+      <label class="btn btn-sm transition-all duration-200">
+        <input type="radio" class="sr-only peer" [name]="name()" [value]="option.value" [checked]="false"
+          (change)="onOptionChange(option.value)" />
+        {{ getDisplayLabel(option) }}
+      </label>
+      }
+    }
+  </div>
+</div>

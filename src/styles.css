@@ -1,1 +1,96 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: "hotelitalia" --default;
+}
+
+@theme {
+  --font-sans: 'Humanist521BT', system-ui, sans-serif;
+  --font-serif: 'Humanist521BT', serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* Tu tema personalizado */
+  --color-base-100: #ffffff;
+  --color-base-200: #f9fafb;
+  --color-base-300: #f3f4f6;
+  --color-base-content: #1f2937;
+
+  --color-primary: #22c55e;
+  --color-primary-focus: #059669;
+  --color-primary-content: #ffffff;
+
+  --color-secondary: #0f766e;
+  --color-secondary-content: #ffffff;
+  --color-accent: #34d399;
+  --color-accent-content: #ffffff;
+
+  --color-neutral: #2a323c;
+  --color-neutral-content: #ffffff;
+  --color-info: #3abff8;
+  --color-info-content: #ffffff;
+  --color-success: #22c55e;
+  --color-success-content: #ffffff;
+  --color-warning: #fbbd23;
+  --color-warning-content: #1f2937;
+  --color-error: #f87272;
+  --color-error-content: #ffffff;
+
+  --radius-selector: 1rem;
+  --radius-field: 0.25rem;
+  --radius-box: 1rem;
+}
+
+:root {
+  --border: 1px;
+}
+
+@font-face {
+  font-family: 'Humanist521BT';
+  src: url('assets/fonts/Humanist521BT.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Aplicar la fuente globalmente */
+body {
+  font-family: var(--font-sans);
+}
+
+/* Estilos para h2 */
+h2 {
+  @apply text-3xl md:text-4xl bg-clip-text text-transparent bg-linear-to-r from-neutral-800 to-neutral-600;
+}
+
+/* Estilos para h3 */
+h3 {
+  @apply font-sans text-2xl md:text-3xl bg-clip-text text-transparent bg-linear-to-r from-neutral-700 to-neutral-500 mb-2;
+}
+h4
+{
+  @apply font-sans bg-clip-text text-transparent bg-linear-to-r from-neutral-600 to-neutral-400 mb-2;
+}
+
+/* Estilos para párrafos */
+p {
+  @apply text-neutral-600;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-280px * 5));
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+.hover\:pause-animation:hover {
+  animation-play-state: paused;
+}
+
+

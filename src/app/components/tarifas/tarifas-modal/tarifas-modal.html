@@ -1,0 +1,71 @@
+<!-- Cierre -->
+<form method="dialog" (submit)="onCerrar()">
+  <button type="submit" class="btn btn-sm btn-circle btn-ghost absolute right-4 top-4 z-20"
+    aria-label="Cerrar modal">✕</button>
+</form>
+
+@if (selected(); as s) {
+<div class="grid grid-cols-1 md:grid-cols-2 gap-0 max-h-[86vh] overflow-hidden">
+
+  <!-- LEFT: Galería -->
+  <div class="p-2 flex flex-col items-center ">
+
+    <!-- Imagen principal -->
+    <figure class="w-full max-h-[60vh] lg:max-h-[50vh] bg-base-200 overflow-hidden rounded-lg"
+      style="aspect-ratio: 16 / 10;">
+      <img [src]="s.imagenes[currentIndex()]" [alt]="translate.t(s.nombre)"
+        class="w-full h-full object-cover transition-opacity duration-300" decoding="async" loading="eager"
+        fetchpriority="high" />
+    </figure>
+
+    <!-- Miniaturas -->
+    <div class="flex gap-2 mt-3 justify-center overflow-x-auto p-2">
+      @for (img of s.imagenes; track $index) {
+      <img [src]="img" [alt]="translate.t(s.nombre) + ' ' + ($index + 1)"
+        class="w-16 lg:w-20 h-14 object-cover rounded-lg border border-base-200 cursor-pointer shrink-0 transition-all duration-150 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+        (click)="onSelect($index)" [class.ring-2]="currentIndex() === $index"
+        [class.ring-emerald-500]="currentIndex() === $index" [class.ring-offset-2]="currentIndex() === $index"
+        role="button" tabindex="0" loading="lazy" decoding="async" width="80" height="56" />
+      }
+    </div>
+  </div>
+
+  <!-- RIGHT: Detalles -->
+  <div class="px-6 py-5 flex flex-col justify-between overflow-y-auto max-h-[86vh]">
+    <div>
+      <h3 id="tarifa-title" class="text-2xl font-bold mb-2">
+        {{ translate.t(s.nombre) }}
+      </h3>
+      <p class="text-sm text-base-content/70 mb-4">
+        {{ translate.t(s.descripcion) }}
+      </p>
+
+      <!-- Precio -->
+      <div class="mb-4">
+        <div class="text-3xl font-extrabold text-emerald-600">S/. {{ s.precio }}</div>
+        <div class="text-sm text-base-content/50">{{ translate.t('tarifas.noche') }}</div>
+      </div>
+
+      <!-- Beneficios -->
+      <ul class="space-y-2 text-sm mb-6 hidden lg:block" aria-hidden="false">
+        @for (b of s.beneficios; track $index) {
+        <li class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-emerald-500 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd"
+              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+              clip-rule="evenodd" />
+          </svg>
+          <span>{{ translate.t(b) }}</span>
+        </li>
+        }
+      </ul>
+    </div>
+
+    <!-- CTA -->
+    <button  (click)="callModalReserva()" type="button"
+      class="cursor-pointer w-full text-white bg-linear-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 focus:ring-4 focus:ring-green-300 font-semibold rounded-xl text-base px-6 py-3 shadow-md hover:shadow-lg transition-all">
+      {{ translate.t('formReserva.title') }}
+    </button>
+  </div>
+</div>
+}
