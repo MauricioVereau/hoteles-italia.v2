@@ -1,7 +1,7 @@
 <!-- DATOS DEL CONSUMIDOR -->
-<form [formGroup]="reclamoForm" (ngSubmit)="onSubmit()" class="space-y-5">
+<form [formGroup]="reclamoForm" (ngSubmit)="onSubmit()">
 
-  <fieldset class="fieldset bg-base-300 border-base-300 rounded-box w-full border p-4">
+  <fieldset class="fieldset bg-base-300 rounded-box w-full p-4">
     <legend class="fieldset-legend text-lg">
       <h4 class="font-bold mt-2 text-lg border-b pb-1">{{translate.t('reclamoForm.tituloLugarFecha')}}</h4>
     </legend>
@@ -9,7 +9,7 @@
 
       <!-- Radios de sede -->
       <div class="flex flex-col gap-2 items-center md:items-start">
-        <label class="font-semibold mb-1 text-neutral">{{translate.t('reclamoForm.sedeLabel')}}</label>
+        <label class="label font-semibold mb-1">{{translate.t('reclamoForm.sedeLabel')}}</label>
         <div class="flex flex-row md:flex-col gap-4">
           <label class="label cursor-pointer flex items-center gap-2">
             <input type="radio" formControlName="sede" class="radio radio-primary" value="Arica" />
@@ -24,22 +24,22 @@
 
       <!-- Fecha Reclamo(Muestro Fecha pero la seteo en el payload) -->
       <div class="flex flex-col items-center">
-        <label class="font-semibold mb-1 text-neutral">{{translate.t('reclamoForm.fechaLabel')}}</label>
-        <div class="grid auto-cols-max grid-flow-col gap-3 text-center">
-          <div class="bg-primary rounded-box text-neutral-content flex flex-col items-center p-2">
-            <span class="font-mono text-4xl">
+        <label class="label font-semibold mb-1">{{translate.t('reclamoForm.fechaLabel')}}</label>
+        <div class="grid auto-cols-max grid-flow-col gap-3 text-center text-neutral-50">
+          <div class="bg-primary rounded-box flex flex-col items-center p-2">
+            <span class="font-mono text-3xl">
               <span>{{ fecha().dia}}</span>
             </span>
             <span class="text-sm">{{translate.t('reclamoForm.dia')}}</span>
           </div>
-          <div class="bg-primary rounded-box text-neutral-content flex flex-col items-center p-2">
-            <span class="font-mono text-4xl">
+          <div class="bg-primary rounded-box flex flex-col items-center p-2">
+            <span class="font-mono text-3xl">
               <span>{{ fecha().mes}}</span>
             </span>
             <span class="text-sm">{{translate.t('reclamoForm.mes')}}</span>
           </div>
-          <div class="bg-primary rounded-box text-neutral-content flex flex-col items-center p-2">
-            <span class="font-mono text-4xl">
+          <div class="bg-primary rounded-box flex flex-col items-center p-2">
+            <span class="font-mono text-3xl">
               <span>{{ fecha().anio.toString() | slice:-2 }}</span>
             </span>
             <span class="text-sm">{{translate.t('reclamoForm.anio')}}</span>
@@ -50,21 +50,19 @@
     </div>
   </fieldset>
 
-  <fieldset class="fieldset bg-base-300 border-base-300 rounded-box w-full border p-5 md:p-6">
-
+  <fieldset class="fieldset bg-base-300 rounded-box w-full p-4 md:p-6">
     <legend class="fieldset-legend text-lg mb-2">
       <h4 class="font-bold mt-2 md-4 text-lg pb-1">
         {{translate.t('reclamoForm.tituloDatosConsumidor')}}
       </h4>
     </legend>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="grid grid-cols-2 gap-4">
       <!-- Tipo Documento -->
       <div class="flex flex-col" [formGroup]="reclamoForm">
-        <label class="label text-sm font-semibold text-neutral">
+        <label class="label text-sm font-semibold">
           {{ translate.t('reclamoForm.tipoDocumento') }}
         </label>
-        <select class="select select-bordered w-full" formControlName="tipoDoc">
+        <select class="select select-sm md:select-md select-bordered w-full" formControlName="tipoDoc">
           <option disabled value="">{{ translate.t('reclamoForm.seleccioneTipoDocumento') }}</option>
           <option value="DNI">{{ translate.t('reclamoForm.dni') }}</option>
           <option value="Pasaporte">{{ translate.t('reclamoForm.pasaporte') }}</option>
@@ -75,50 +73,48 @@
 
       <!-- Número de Documento -->
       <div class="flex flex-col">
-        <label class="label text-sm font-semibold text-neutral">{{translate.t('reclamoForm.numeroDocumento')}}</label>
-        <input type="text" formControlName="nroDoc" class="input input-bordered w-full" placeholder="Ej: 74581236" />
+        <label class="label text-sm font-semibold">{{translate.t('reclamoForm.numeroDocumento')}}</label>
+        <input type="text" formControlName="nroDoc" class="input input-sm md:input-md input-bordered w-full"/>
       </div>
 
       <!-- Nombre completo -->
-      <div class="flex flex-col md:col-span-2">
-        <label class="label text-sm font-semibold text-neutral">{{translate.t('reclamoForm.nombreCompleto')}}</label>
-        <input type="text" formControlName="nombre" class="input input-bordered w-full"
-          placeholder="Ej: Juan Pérez García" />
+      <div class="flex flex-col col-span-2">
+        <label class="label text-sm font-semibold">{{translate.t('reclamoForm.nombreCompleto')}}</label>
+        <input type="text" formControlName="nombre" class="input input-sm md:input-md input-bordered w-full"/>
       </div>
 
       <!-- Correo electrónico -->
       <div class="flex flex-col">
-        <label class="label text-sm font-semibold text-neutral">{{translate.t('reclamoForm.correo')}}</label>
-        <input type="email" formControlName="email" class="input input-bordered w-full" placeholder="mail@site.com" />
+        <label class="label text-sm font-semibold">{{translate.t('reclamoForm.correo')}}</label>
+        <input type="email" formControlName="email" class="input input-sm md:input-md input-bordered w-full"/>
       </div>
 
       <!-- Teléfono -->
       <div class="flex flex-col">
-        <label class="label text-sm font-semibold text-neutral">{{translate.t('reclamoForm.telefono')}}</label>
-        <input type="tel" formControlName="phone" class="input input-bordered w-full" placeholder="+51 999 999 999" />
+        <label class="label text-sm font-semibold">{{translate.t('reclamoForm.telefono')}}</label>
+        <input type="tel" formControlName="phone" class="input input-sm md:input-md input-bordered w-full"/>
       </div>
 
       <!-- Dirección (ocupa 2 columnas en escritorio) -->
-      <div class="flex flex-col md:col-span-2">
-        <label class="label text-sm font-semibold text-neutral">{{translate.t('reclamoForm.direccion')}}</label>
-        <input type="text" formControlName="direccion" class="input input-bordered w-full"
-          placeholder="Ej: Av. Los Incas 123, Trujillo" />
+      <div class="flex flex-col col-span-2">
+        <label class="label text-sm font-semibold">{{translate.t('reclamoForm.direccion')}}</label>
+        <input type="text" formControlName="direccion" class="input input-sm md:input-md input-bordered w-full"/>
       </div>
     </div>
   </fieldset>
 
-  <fieldset class="fieldset bg-base-300 border-base-300 rounded-box w-full border p-5 md:p-6">
+  <fieldset class="fieldset bg-base-300 rounded-box w-full p-4 md:p-6">
     <legend class="fieldset-legend text-lg mb-2">
       <h4 class="font-bold mt-2 md-4 text-lg pb-1">
         {{translate.t('reclamoForm.tituloBienServicio')}}
       </h4>
     </legend>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="grid grid-cols-2 gap-4">
       <!-- Tipo Servicio -->
       <div class="flex flex-col">
-        <label class="label text-sm font-semibold text-neutral">{{translate.t('reclamoForm.tipoServicio')}}</label>
-        <select class="select select-bordered w-full" formControlName="tipoServ">
-          <option disabled selected>{{translate.t('reclamoForm.seleccioneTipoServicio')}}</option>
+        <label class="label text-sm font-semibold">{{translate.t('reclamoForm.tipoServicio')}}</label>
+        <select class="select select-sm md:select-md  select-bordered w-full" formControlName="tipoServ">
+          <option disabled value="">{{translate.t('reclamoForm.seleccioneTipoServicio')}}</option>
           <option value="Hospedaje">{{translate.t('reclamoForm.servicioHospedaje')}}</option>
           <option value="Pago">{{translate.t('reclamoForm.servicioPago')}}</option>
           <option value="Atención">{{translate.t('reclamoForm.servicioAtencion')}}</option>
@@ -126,45 +122,54 @@
       </div>
       <!-- Monto (S/) -->
       <div class="flex flex-col">
-        <label class="label text-sm font-semibold text-neutral">{{translate.t('reclamoForm.monto')}}</label>
-        <input type="number" formControlName="monto" step="0.01" class="input input-bordered w-full" />
+        <label class="label text-sm font-semibold">{{translate.t('reclamoForm.monto')}}</label>
+        <input type="number" formControlName="monto" step="0.01"
+          class="input input-sm md:input-md input-bordered w-full" />
       </div>
       <!--Descripción del servicio  -->
-      <div class="flex flex-col md:col-span-2">
-        <label
-          class="label text-sm font-semibold text-neutral">{{translate.t('reclamoForm.descripcionServicio')}}</label>
-        <textarea class="textarea textarea-bordered w-full" formControlName="descServ"></textarea>
+      <div class="flex flex-col col-span-2">
+        <label class="label text-sm font-semibold">{{translate.t('reclamoForm.descripcionServicio')}}</label>
+        <textarea class="textarea textarea-sm textarea-bordered w-full"
+          formControlName="descServ"></textarea>
       </div>
     </div>
   </fieldset>
 
-  <fieldset class="fieldset bg-base-300 border-base-300 rounded-box w-full border p-5 md:p-6">
+  <fieldset class="fieldset bg-base-300 rounded-box w-full p-4 md:p-6">
     <legend class="fieldset-legend text-lg mb-2">
       <h4 class="font-bold mt-2 md-4 text-lg pb-1">
         {{translate.t('reclamoForm.tituloReclamoQueja')}}
       </h4>
     </legend>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+    <div class="grid grid-cols-2 gap-4">
       <!-- Tipo -->
-      <div class="flex flex-col">
-        <label class="label text-sm font-semibold text-neutral">{{translate.t('reclamoForm.tipo')}}</label>
-        <select class="select select-bordered w-full" formControlName="tipo">
-          <option disabled selected>{{translate.t('reclamoForm.seleccioneTipo')}}</option>
-          <option value="Reclamo">{{translate.t('reclamoForm.reclamo')}}</option>
-          <option value="Queja">{{translate.t('reclamoForm.queja')}}</option>
-        </select>
+
+      <div class="flex flex-col col-span-2 gap-2 justify-center items-center">
+        <label class="label font-semibold mb-1">{{translate.t('reclamoForm.tipo')}}</label>
+        <div class="flex flex-row gap-4">
+          <label class="label cursor-pointer flex items-center gap-2">
+            <input type="radio" formControlName="tipo" class="radio radio-primary" value="Reclamo" />
+            <span> {{translate.t('reclamoForm.reclamo')}}</span>
+          </label>
+          <label class="label cursor-pointer flex items-center gap-2">
+            <input type="radio" formControlName="tipo" class="radio radio-primary" value="Queja" />
+            <span>{{translate.t('reclamoForm.queja')}}</span>
+          </label>
+        </div>
       </div>
       <!--Descripción  -->
-      <div class="flex flex-col md:col-span-2">
-        <label class="label text-sm font-semibold text-neutral">{{translate.t('reclamoForm.descripcion')}}</label>
-        <textarea class="textarea textarea-bordered w-full" formControlName="desc"></textarea>
+      <div class="flex flex-col col-span-2">
+        <label class="label text-sm font-semibold">{{translate.t('reclamoForm.detalle')}}</label>
+        <textarea class="textarea textarea-sm textarea-bordered w-full" formControlName="desc"></textarea>
       </div>
-      <div class="flex flex-col md:col-span-2">
-        <label class="label text-sm font-semibold text-neutral">{{translate.t('reclamoForm.pedidoConsumidor')}}</label>
-        <textarea class="textarea textarea-bordered w-full" formControlName="pedidoCli"></textarea>
+      <div class="flex flex-col col-span-2">
+        <label class="label text-sm font-semibold">{{translate.t('reclamoForm.pedidoConsumidor')}}</label>
+        <textarea class="textarea textarea-sm textarea-bordered w-full" formControlName="pedidoCli"></textarea>
       </div>
     </div>
   </fieldset>
+
   <div class="text-center mt-8">
     <button type="submit" [disabled]="reclamoForm.invalid" class="btn btn-primary px-8">
       {{translate.t('reclamoForm.btnSiguiente')}}

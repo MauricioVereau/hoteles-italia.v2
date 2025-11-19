@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, computed, inject, input, output, signal } from '@angular/core';
 import { TranslateService } from '../../services/translate.service';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { nroDocumentoValidator } from '../../validator/nro-documento.validator';
 
 @Component({
   selector: 'form-reclamo',
@@ -24,7 +25,7 @@ export class FormReclamo {
   reclamoForm = this.fb.group({
     sede: ['Arica', Validators.required],
     tipoDoc: ['', Validators.required],
-    nroDoc: ['', Validators.required],
+    nroDoc: ['', Validators.required, nroDocumentoValidator],
     nombre: ['', [Validators.required, Validators.minLength(2)]],
     email: ['', [Validators.required, Validators.email]],
     phone: ['', [Validators.required, Validators.pattern('^[0-9]{9}$')]],
@@ -32,7 +33,7 @@ export class FormReclamo {
     tipoServ: ['', Validators.required],
     monto: [''],
     descServ: [''],
-    tipo: ['', Validators.required],
+    tipo: ['Reclamo', Validators.required],
     desc: ['', Validators.required],
     pedidoCli: ['']
   });
