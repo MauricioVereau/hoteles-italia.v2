@@ -1,7 +1,12 @@
-<div class="container mx-auto px-4 py-8 mt-10">
+<div class=" flex flex-col justify-center text-center mt-10 p-6 gap-1">
+  <h2 class="font-bold">{{translate.t('reclamoPage.title')}}</h2>
+  <p>{{translate.t('reclamoPage.subtitle')}}</p>
+</div>
+<div class="@container bg-base-100 rounded-xl shadow-xl p-4 mb-4 max-w-3xl mx-auto">
+
   <!-- Progress Bar -->
   <div class="steps steps-horizontal w-full mb-8">
-    @for (step of [1, 2, 3]; track step) {
+    @for (step of [1, 2, 3, 4]; track step) {
     <div class="step" [class.step-primary]="currentStep() >= step">
       {{ getStepName(step) }}
     </div>
@@ -10,60 +15,51 @@
 
   <!-- Step 1: Formulario -->
   @if (currentStep() === 1) {
-  <h3 class="text-2xl font-bold mb-4 text-center">
-    {{ translate.t('reclamoForm.title') }}
-  </h3>
   <form-reclamo [formData]="formData()" (formSubmitted)="onFormSubmitted($event)" />
   }
 
   <!-- Step 2: Resumen y Confirmación -->
   @if (currentStep() === 2) {
   <div class="space-y-6">
-    <h3 class="text-xl font-bold text-center mb-6">
+    <h3 class="text-xl font-bold text-center mb-6 text-info">
       {{translate.t('reclamoForm.resumenTitulo')}}
     </h3>
-
     <!-- Resumen de datos -->
-    <div class="bg-base-200 rounded-lg p-6 space-y-4">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div><strong>Nombre:</strong> {{formData().nombre}}</div>
-        <div><strong>Email:</strong> {{formData().email}}</div>
-        <div><strong>Teléfono:</strong> {{formData().phone}}</div>
-        <div><strong>Tipo Documento:</strong> {{formData().tipoDoc}}</div>
-        <div><strong>N° Documento:</strong> {{formData().nroDoc}}</div>
-        <div><strong>Dirección:</strong> {{formData().direccion}}</div>
-        <div><strong>Tipo Servicio:</strong> {{formData().tipoServ}}</div>
-        <div><strong>Monto:</strong> S/ {{formData().monto}}</div>
-        <div class="md:col-span-2">
-          <strong>Descripción Servicio:</strong> {{formData().descServ}}
-        </div>
-        <div class="md:col-span-2">
-          <strong>Descripción Reclamo:</strong> {{formData().desc}}
-        </div>
-        <div class="md:col-span-2">
-          <strong>Pedido del Consumidor:</strong> {{formData().pedidoCli}}
-        </div>
+    <div class="bg-base-200 rounded-lg p-6 grid grid-cols-1 @md:grid-cols-2 gap-4 text-base-content/80">
+      <div><strong>Nombre:</strong> {{formData().nombre}}</div>
+      <div><strong>Email:</strong> {{formData().email}}</div>
+      <div><strong>Teléfono:</strong> {{formData().phone}}</div>
+      <div><strong>Tipo Documento:</strong> {{formData().tipoDoc}}</div>
+      <div><strong>N° Documento:</strong> {{formData().nroDoc}}</div>
+      <div><strong>Dirección:</strong> {{formData().direccion}}</div>
+      <div><strong>Tipo Servicio:</strong> {{formData().tipoServ}}</div>
+      <div><strong>Monto:</strong> S/ {{formData().monto}}</div>
+      <div class="@md:col-span-2">
+        <strong>Descripción Servicio:</strong> {{formData().descServ}}
+      </div>
+      <div class="@md:col-span-2">
+        <strong>Descripción Reclamo:</strong> {{formData().desc}}
+      </div>
+      <div class="@md:col-span-2">
+        <strong>Pedido del Consumidor:</strong> {{formData().pedidoCli}}
       </div>
     </div>
-
     <div class="space-y-2 mt-6">
-      <label class="flex items-start space-x-2">
+      <label class="flex items-start gap-2">
         <input type="checkbox" required class="checkbox checkbox-primary mt-1">
         <span class="text-sm">{{translate.t('reclamoForm.consentimiento1')}}</span>
       </label>
-      <label class="flex items-start space-x-2">
+      <label class="flex items-start gap-2">
         <input type="checkbox" required class="checkbox checkbox-primary mt-1">
         <span class="text-sm">{{translate.t('reclamoForm.consentimiento2')}}</span>
       </label>
     </div>
-
     <!-- Botones de Navegación -->
-    <div class="flex justify-between mt-8">
-      <button (click)="currentStep.set(1)" type="button" class="btn btn-outline px-8">
+    <div class="flex flex-col @md:flex-row justify-between gap-4 mt-8">
+      <button (click)="currentStep.set(1)" type="button" class="btn btn-outline px-8 w-full @md:w-auto">
         {{translate.t('reclamoForm.btnEditar')}}
       </button>
-
-      <button (click)="onConfirmSubmit()" type="button" class="btn btn-primary px-8">
+      <button (click)="onConfirmSubmit()" type="button" class="btn btn-primary px-8 w-full @md:w-auto">
         {{translate.t('reclamoForm.btnEnviar')}}
       </button>
     </div>
@@ -73,19 +69,16 @@
   <!-- Step 3: Turnstile y Envío -->
   @if (currentStep() === 3) {
   <div class="text-center space-y-6">
-    <h3 class="text-xl font-bold mb-4">
+    <h3 class="text-xl font-bold mb-4 text-warning">
       {{translate.t('reclamoForm.verificacionTitulo')}}
     </h3>
-
     <p class="text-base-content/70 mb-6">
       {{translate.t('reclamoForm.verificacionMensaje')}}
     </p>
-
     <!-- Turnstile Container -->
     <div class="flex justify-center py-4">
       <app-turnstile (tokenGenerated)="onTokenGenerated($event)" />
     </div>
-
     <!-- Loading State -->
     @if (isSubmitting()) {
     <div class="text-center">
@@ -93,7 +86,6 @@
       <p class="mt-2">{{translate.t('reclamoForm.enviando')}}</p>
     </div>
     }
-
     <!-- Botón Volver -->
     <button (click)="currentStep.set(2)" type="button" class="btn btn-outline px-8">
       {{translate.t('reclamoForm.btnAnterior')}}
@@ -105,14 +97,12 @@
   @if (currentStep() === 4) {
   <div class="text-center space-y-6">
     <!-- Icono de éxito -->
-    <div class="text-green-500 text-6xl mb-4">
+    <div class="text-success text-6xl mb-4">
       <i class="fas fa-check-circle"></i>
     </div>
-
     <h3 class="text-2xl font-bold text-success">
       {{translate.t('reclamoForm.exitoTitulo')}}
     </h3>
-
     <!-- Código único generado -->
     <div class="bg-base-200 rounded-lg p-6 max-w-md mx-auto">
       <p class="text-sm mb-2">{{translate.t('reclamoForm.codigoUnico')}}</p>
@@ -120,28 +110,16 @@
         {{codigoReclamo()}}
       </div>
     </div>
-
     <p class="text-base-content/70 max-w-2xl mx-auto">
       {{translate.t('reclamoForm.mensajeExito')}}
     </p>
-
     <!-- Información adicional -->
-    <div class="bg-info/10 rounded-lg p-4 max-w-2xl mx-auto">
-      <p class="text-sm">
+    <div role="alert" class="alert alert-info alert-soft">
+      <span class="text-sm">
         <strong>Importante:</strong> Guarde este código para realizar el seguimiento de su reclamo.
         Será contactado dentro de las próximas 48 horas.
-      </p>
+      </span>
     </div>
-
-    <!-- Botón para nuevo reclamo -->
-    <!-- <div class="pt-6">
-            <button
-              (click)="resetProcess()"
-              type="button"
-              class="btn btn-primary px-8">
-              {{translate.t('reclamoForm.btnNuevoReclamo')}}
-            </button>
-          </div> -->
   </div>
   }
 </div>

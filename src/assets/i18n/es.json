@@ -191,8 +191,6 @@
     }
   },
   "reclamoForm": {
-    "title": "Libro de Reclamaciones Virtual",
-    "subtitle": "Conforme al D.S. N° 011-2011-PCM y Ley N° 29571 – Código de Protección y Defensa del Consumidor",
     "tituloLugarFecha": "Lugar y Fecha del Reclamo",
     "sedeLabel": "Sede donde ocurrió el hecho *",
     "fechaLabel": "Fecha del reclamo *",
@@ -233,6 +231,22 @@
     "btnEnviar": "Enviar reclamo",
     "codigoUnico": "Código del Reclamo",
     "mensajeExito": "✅ Reclamo enviado correctamente. Recibirás una copia por correo electrónico."
+  },
+  "reclamoPage":{
+    "title": "Libro de Reclamaciones Virtual",
+    "subtitle": "Conforme al D.S. N° 011-2011-PCM y Ley N° 29571 – Código de Protección y Defensa del Consumidor",
+    "steps":{
+      "1":"Ingresar Datos",
+      "2":"Preevisualizar",
+      "3":"Verificación",
+      "4":"Confirmación"
+    },
+    "stepsDescription":{
+      "1":"Completa tus datos personales y del reclamo",
+      "2":"Revisa que la información ingresada sea correcta.",
+      "3":"Verificación Automática de Identidad",
+      "4":"Confirmación"
+    }
   },
   "footer": {
     "button": "Llamar",

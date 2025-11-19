@@ -1,7 +1,7 @@
-import { Component, inject, signal, ViewChild } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormReclamo } from "../../components/form-reclamo/form-reclamo";
 import { TranslateService } from '../../services/translate.service';
-import { CommonModule, NgClass } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { TurnstileContainer } from "../../components/turnstile-container/turnstile-container";
 
 @Component({
@@ -21,10 +21,10 @@ export class ReclamacionesPage {
 
   getStepName(step: number): string {
     const steps = {
-      1: 'Datos del Reclamo',
-      2: 'Revisar Información',
-      3: 'Verificación',
-      4: 'Completado'
+    1: this.translate.t('reclamoPage.steps.1'),
+    2: this.translate.t('reclamoPage.steps.2'),
+    3: this.translate.t('reclamoPage.steps.3'),
+    4: this.translate.t('reclamoPage.steps.4')
     };
     return steps[step as keyof typeof steps] || `Paso ${step}`;
   }

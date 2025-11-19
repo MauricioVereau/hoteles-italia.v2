@@ -191,8 +191,6 @@
     }
   },
   "reclamoForm": {
-    "title": "Virtual complaint book",
-    "subtitle": "In accordance with Supreme Decree No. 011-2011-PCM and Law No. 29571 – Consumer Protection and Defense Code",
     "tituloLugarFecha": "Place and Date of the claim",
     "sedeLabel": "Branch where the event occurred *",
     "fechaLabel": "Date of the claim *",
@@ -229,10 +227,26 @@
     "consentimiento1": "I declare that the data provided are true and authorize the processing of my personal data in accordance with Law No. 29733.",
     "consentimiento2": "I agree to receive responses by electronic means.",
     "btnSiguiente": "Next",
-    "btnEditar":"Edit",
+    "btnEditar": "Edit",
     "btnEnviar": "Submit claim",
     "codigoUnico": "Clame Code",
     "mensajeExito": "✅ Claim sent successfully. You will receive a copy by email."
+  },
+  "reclamoPage": {
+    "title": "Virtual Complaints Book",
+    "subtitle": "According to D.S. No. 011-2011-PCM and Law No. 29571 – Consumer Protection and Defense Code",
+    "steps": {
+      "1": "Enter Data",
+      "2": "Preview",
+      "3": "Verification",
+      "4": "Confirmation"
+    },
+    "stepsDescription": {
+      "1": "Fill in your personal and complaint details.",
+      "2": "Review the information you entered.",
+      "3": "Automatic identity verification.",
+      "4": "Confirmation"
+    }
   },
   "footer": {
     "button": "Call",
