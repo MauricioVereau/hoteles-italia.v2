@@ -59,46 +59,59 @@
     <div class="grid grid-cols-2 gap-4">
       <!-- Tipo Documento -->
       <div class="flex flex-col" [formGroup]="reclamoForm">
-        <label class="label text-sm font-semibold">
+        <label class="label text-sm font-semibold validator"
+        [class.input-success]="f.tipoDoc.valid && f.tipoDoc.touched && !f.tipoDoc.dirty"
+        [class.input-error]="f.tipoDoc.invalid && f.tipoDoc.touched">
           {{ translate.t('reclamoForm.tipoDocumento') }}
         </label>
         <select class="select select-sm md:select-md select-bordered w-full" formControlName="tipoDoc">
-          <option disabled value="">{{ translate.t('reclamoForm.seleccioneTipoDocumento') }}</option>
+          <option disabled>{{ translate.t('reclamoForm.seleccioneTipoDocumento') }}</option>
           <option value="DNI">{{ translate.t('reclamoForm.dni') }}</option>
           <option value="Pasaporte">{{ translate.t('reclamoForm.pasaporte') }}</option>
           <option value="Carnet de Extranjería">{{ translate.t('reclamoForm.carnetExtranjeria') }}</option>
           <option value="RUC">RUC</option>
         </select>
+
+        @if (f.tipoDoc.invalid && f.tipoDoc.touched) {
+        <div class="text-error text-xs mt-1 flex items-center gap-1">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd"
+              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+              clip-rule="evenodd"></path>
+          </svg>
+          {{ f.tipoDoc.errors?.['required'] ? translate.t('reservaForm.errors.required') : '' }}
+        </div>
+        }
       </div>
 
       <!-- Número de Documento -->
       <div class="flex flex-col">
         <label class="label text-sm font-semibold">{{translate.t('reclamoForm.numeroDocumento')}}</label>
-        <input type="text" formControlName="nroDoc" class="input input-sm md:input-md input-bordered w-full"/>
+        <input type="text" formControlName="nroDoc" class="input input-sm md:input-md input-bordered w-full" />
       </div>
 
       <!-- Nombre completo -->
       <div class="flex flex-col col-span-2">
         <label class="label text-sm font-semibold">{{translate.t('reclamoForm.nombreCompleto')}}</label>
-        <input type="text" formControlName="nombre" class="input input-sm md:input-md input-bordered w-full"/>
+        <input type="text" formControlName="nombre" class="input input-sm md:input-md input-bordered w-full" />
       </div>
 
       <!-- Correo electrónico -->
       <div class="flex flex-col">
         <label class="label text-sm font-semibold">{{translate.t('reclamoForm.correo')}}</label>
-        <input type="email" formControlName="email" class="input input-sm md:input-md input-bordered w-full"/>
+        <input type="email" formControlName="email" class="input input-sm md:input-md input-bordered w-full" />
       </div>
 
       <!-- Teléfono -->
       <div class="flex flex-col">
         <label class="label text-sm font-semibold">{{translate.t('reclamoForm.telefono')}}</label>
-        <input type="tel" formControlName="phone" class="input input-sm md:input-md input-bordered w-full"/>
+        <input type="tel" formControlName="phone" class="input input-sm md:input-md input-bordered w-full" />
       </div>
 
       <!-- Dirección (ocupa 2 columnas en escritorio) -->
       <div class="flex flex-col col-span-2">
         <label class="label text-sm font-semibold">{{translate.t('reclamoForm.direccion')}}</label>
-        <input type="text" formControlName="direccion" class="input input-sm md:input-md input-bordered w-full"/>
+        <input type="text" formControlName="direccion" class="input input-sm md:input-md input-bordered w-full" />
       </div>
     </div>
   </fieldset>
@@ -129,8 +142,7 @@
       <!--Descripción del servicio  -->
       <div class="flex flex-col col-span-2">
         <label class="label text-sm font-semibold">{{translate.t('reclamoForm.descripcionServicio')}}</label>
-        <textarea class="textarea textarea-sm textarea-bordered w-full"
-          formControlName="descServ"></textarea>
+        <textarea class="textarea textarea-sm textarea-bordered w-full" formControlName="descServ"></textarea>
       </div>
     </div>
   </fieldset>
