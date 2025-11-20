@@ -50,7 +50,7 @@ export class ReclamacionesPage {
   private submitForm(token: string): void {
     this.isSubmitting.set(true);
 
-    // Aquí iría tu llamada al servicio WorkerService
+
     const payload = {
       ...this.formData(),
       tokenTurnstile: token,
@@ -61,14 +61,13 @@ export class ReclamacionesPage {
 
     console.log('reclamo', payload);
 
-    // Simulamos el envío (reemplaza con tu servicio real)
+    // Simulamos el envío
     setTimeout(() => {
       this.generarCodigoUnico();
       this.isSubmitting.set(false);
       this.currentStep.set(4);
     }, 10000);
 
-    // Ejemplo con tu servicio real (descomenta y adapta):
     /*
     this.workerService.reclamoForm(payload).pipe(
       tap(res => {

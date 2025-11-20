@@ -15,6 +15,11 @@
 
   <!-- Step 1: Formulario -->
   @if (currentStep() === 1) {
+  <div class="flex justify-center">
+    <h3 class="text-xl font-bold">
+      {{ translate.t('reclamoPage.stepsDescription.1')}}
+    </h3>
+  </div>
   <form-reclamo [formData]="formData()" (formSubmitted)="onFormSubmitted($event)" />
   }
 
@@ -22,26 +27,26 @@
   @if (currentStep() === 2) {
   <div class="space-y-6">
     <h3 class="text-xl font-bold text-center mb-6">
-      {{translate.t('reclamoForm.resumenTitulo')}}
+      {{translate.t('reclamoPage.stepsDescription.2')}}
     </h3>
     <!-- Resumen de datos -->
     <div class="bg-base-200 rounded-lg p-6 grid grid-cols-1 @md:grid-cols-2 gap-4 text-base-content/80">
-      <div><strong>Nombre:</strong> {{formData().nombre}}</div>
-      <div><strong>Email:</strong> {{formData().email}}</div>
-      <div><strong>Teléfono:</strong> {{formData().phone}}</div>
-      <div><strong>Tipo Documento:</strong> {{formData().tipoDoc}}</div>
-      <div><strong>N° Documento:</strong> {{formData().nroDoc}}</div>
-      <div><strong>Dirección:</strong> {{formData().direccion}}</div>
-      <div><strong>Tipo Servicio:</strong> {{formData().tipoServ}}</div>
-      <div><strong>Monto:</strong> S/ {{formData().monto}}</div>
+      <div><strong>{{translate.t('reclamoForm.nombreCompleto')}}:</strong> {{formData().nombre}}</div>
+      <div><strong>{{translate.t('reclamoForm.correo')}}:</strong> {{formData().email}}</div>
+      <div><strong>{{translate.t('reclamoForm.telefono')}}:</strong> {{formData().phone}}</div>
+      <div><strong>{{translate.t('reclamoForm.tipoDocumento')}}:</strong> {{formData().tipoDoc}}</div>
+      <div><strong>{{translate.t('reclamoForm.numeroDocumento')}}:</strong> {{formData().nroDoc}}</div>
+      <div><strong>{{translate.t('reclamoForm.direccion')}}:</strong> {{formData().direccion}}</div>
+      <div><strong>{{translate.t('reclamoForm.tipoServicio')}}:</strong> {{formData().tipoServ}}</div>
+      <div><strong>{{translate.t('reclamoForm.monto')}}:</strong> S/ {{formData().monto}}</div>
       <div class="@md:col-span-2">
-        <strong>Descripción Servicio:</strong> {{formData().descServ}}
+        <strong>{{translate.t('reclamoForm.descripcionServicio')}}:</strong> {{formData().descServ}}
       </div>
       <div class="@md:col-span-2">
-        <strong>Descripción Reclamo:</strong> {{formData().desc}}
+        <strong>{{translate.t('reclamoForm.detalle')}}:</strong> {{formData().detalle}}
       </div>
       <div class="@md:col-span-2">
-        <strong>Pedido del Consumidor:</strong> {{formData().pedidoCli}}
+        <strong>{{translate.t('reclamoForm.pedidoConsumidor')}}:</strong> {{formData().pedidoCli}}
       </div>
     </div>
     <div class="space-y-2 mt-6">
@@ -70,11 +75,9 @@
   @if (currentStep() === 3) {
   <div class="text-center space-y-6">
     <h3 class="text-xl font-bold mb-4 text-warning">
-      {{translate.t('reclamoForm.verificacionTitulo')}}
+      {{translate.t('reclamoPage.stepsDescription.3')}}
     </h3>
-    <p class="text-base-content/70 mb-6">
-      {{translate.t('reclamoForm.verificacionMensaje')}}
-    </p>
+
     <!-- Turnstile Container -->
     <div class="flex justify-center py-4">
       <app-turnstile (tokenGenerated)="onTokenGenerated($event)" />
@@ -82,8 +85,8 @@
     <!-- Loading State -->
     @if (isSubmitting()) {
     <div class="text-center">
-      <span class="loading loading-spinner loading-lg"></span>
-      <p class="mt-2">{{translate.t('reclamoForm.enviando')}}</p>
+      <span class="loading loading-spinner loading-lg text-primary"></span>
+      <p>Generando Código</p>
     </div>
     }
     <!-- Botón Volver -->
@@ -100,8 +103,8 @@
     <div class="text-success text-6xl mb-4">
       <i class="fas fa-check-circle"></i>
     </div>
-    <h3 class="text-2xl font-bold text-success">
-      {{translate.t('reclamoForm.exitoTitulo')}}
+    <h3 class="text-2xl font-bold">
+      {{translate.t('reclamoPage.stepsDescription.3')}}
     </h3>
     <!-- Código único generado -->
     <div class="bg-base-200 rounded-lg p-6 max-w-md mx-auto">

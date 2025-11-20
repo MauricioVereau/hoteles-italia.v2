@@ -60,8 +60,8 @@
       <!-- Tipo Documento -->
       <div class="flex flex-col" [formGroup]="reclamoForm">
         <label class="label text-sm font-semibold validator"
-        [class.input-success]="f.tipoDoc.valid && f.tipoDoc.touched && !f.tipoDoc.dirty"
-        [class.input-error]="f.tipoDoc.invalid && f.tipoDoc.touched">
+          [class.input-success]="f.tipoDoc.valid && f.tipoDoc.touched && !f.tipoDoc.dirty"
+          [class.input-error]="f.tipoDoc.invalid && f.tipoDoc.touched">
           {{ translate.t('reclamoForm.tipoDocumento') }}
         </label>
         <select class="select select-sm md:select-md select-bordered w-full" formControlName="tipoDoc">
@@ -79,7 +79,7 @@
               d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
               clip-rule="evenodd"></path>
           </svg>
-          {{ f.tipoDoc.errors?.['required'] ? translate.t('reservaForm.errors.required') : '' }}
+          {{ f.tipoDoc.errors?.['required'] ? translate.t('reclamoForm.errors.required') : '' }}
         </div>
         }
       </div>
@@ -87,32 +87,94 @@
       <!-- Número de Documento -->
       <div class="flex flex-col">
         <label class="label text-sm font-semibold">{{translate.t('reclamoForm.numeroDocumento')}}</label>
-        <input type="text" formControlName="nroDoc" class="input input-sm md:input-md input-bordered w-full" />
+        <input type="text" formControlName="nroDoc" class="input input-sm md:input-md input-bordered w-full validator"
+          [class.input-success]="f.nroDoc.valid && f.nroDoc.touched && !f.nroDoc.dirty"
+          [class.input-error]="f.nroDoc.invalid && f.nroDoc.touched" />
+        @if (f.nroDoc.invalid && f.nroDoc.touched) {
+        <div class="text-error text-xs mt-1 flex items-center gap-1">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd"
+              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+              clip-rule="evenodd"></path>
+          </svg>
+          {{ f.nroDoc.errors?.['required'] ? translate.t('reclamoForm.errors.required') : '' }}
+        </div>
+        }
       </div>
 
       <!-- Nombre completo -->
       <div class="flex flex-col col-span-2">
         <label class="label text-sm font-semibold">{{translate.t('reclamoForm.nombreCompleto')}}</label>
-        <input type="text" formControlName="nombre" class="input input-sm md:input-md input-bordered w-full" />
+        <input type="text" formControlName="nombre" class="input input-sm md:input-md input-bordered w-full validator"
+          [class.input-success]="f.nombre.valid && f.nombre.touched && !f.nombre.dirty"
+          [class.input-error]="f.nombre.invalid && f.nombre.touched" />
+        @if (f.nombre.invalid && f.nombre.touched) {
+        <div class="text-error text-xs mt-1 flex items-center gap-1">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd"
+              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+              clip-rule="evenodd"></path>
+          </svg>
+          {{ f.nombre.errors?.['required'] ? translate.t('reclamoForm.errors.required') : '' }}
+        </div>
+        }
       </div>
 
       <!-- Correo electrónico -->
       <div class="flex flex-col">
         <label class="label text-sm font-semibold">{{translate.t('reclamoForm.correo')}}</label>
-        <input type="email" formControlName="email" class="input input-sm md:input-md input-bordered w-full" />
+        <input type="email" formControlName="email" class="input input-sm md:input-md input-bordered w-full validator"
+          [class.input-success]="f.email.valid && f.email.touched && !f.email.dirty"
+          [class.input-error]="f.email.invalid && f.email.touched" />
+        @if (f.email.invalid && f.email.touched) {
+        <div class="text-error text-xs mt-1 flex items-center gap-1">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd"
+              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+              clip-rule="evenodd"></path>
+          </svg>
+          {{ f.email.errors?.['required'] ? translate.t('reclamoForm.errors.required') :
+          f.email.errors?.['email'] ? translate.t('reclamoForm.errors.email') : '' }}
+        </div>
+        }
       </div>
 
       <!-- Teléfono -->
       <div class="flex flex-col">
         <label class="label text-sm font-semibold">{{translate.t('reclamoForm.telefono')}}</label>
-        <input type="tel" formControlName="phone" class="input input-sm md:input-md input-bordered w-full" />
+        <input type="tel" formControlName="phone" class="input input-sm md:input-md input-bordered w-full validator"
+        [class.input-success]="f.phone.valid && f.phone.touched && !f.phone.pristine"
+        [class.input-error]="f.phone.invalid && f.phone.touched" />
+        @if (f.phone.invalid && f.phone.touched) {
+        <div class="text-error text-xs mt-1 flex items-center gap-1">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd"
+              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+              clip-rule="evenodd"></path>
+          </svg>
+          {{ f.phone.errors?.['required'] ? translate.t('reservaForm.errors.required') :
+          f.phone.errors?.['pattern'] ? translate.t('reservaForm.errors.phone') : '' }}
+        </div>
+        }
       </div>
 
       <!-- Dirección (ocupa 2 columnas en escritorio) -->
       <div class="flex flex-col col-span-2">
         <label class="label text-sm font-semibold">{{translate.t('reclamoForm.direccion')}}</label>
-        <input type="text" formControlName="direccion" class="input input-sm md:input-md input-bordered w-full" />
+        <input type="text" formControlName="direccion" class="input input-sm md:input-md input-bordered w-full validator"
+        [class.input-success]="f.direccion.valid && f.direccion.touched && !f.direccion.pristine"
+        [class.input-error]="f.direccion.invalid && f.direccion.touched" />
       </div>
+      @if (f.direccion.invalid && f.direccion.touched) {
+        <div class="text-error text-xs mt-1 flex items-center gap-1">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd"
+              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+              clip-rule="evenodd"></path>
+          </svg>
+          {{ f.direccion.errors?.['required'] ? translate.t('reclamoForm.errors.required') : ''}}
+        </div>
+        }
     </div>
   </fieldset>
 
@@ -136,8 +198,7 @@
       <!-- Monto (S/) -->
       <div class="flex flex-col">
         <label class="label text-sm font-semibold">{{translate.t('reclamoForm.monto')}}</label>
-        <input type="number" formControlName="monto" step="0.01"
-          class="input input-sm md:input-md input-bordered w-full" />
+        <input type="number" formControlName="monto" step="0.01" class="input input-sm md:input-md input-bordered w-full" />
       </div>
       <!--Descripción del servicio  -->
       <div class="flex flex-col col-span-2">
@@ -156,7 +217,6 @@
 
     <div class="grid grid-cols-2 gap-4">
       <!-- Tipo -->
-
       <div class="flex flex-col col-span-2 gap-2 justify-center items-center">
         <label class="label font-semibold mb-1">{{translate.t('reclamoForm.tipo')}}</label>
         <div class="flex flex-row gap-4">
@@ -170,10 +230,22 @@
           </label>
         </div>
       </div>
-      <!--Descripción  -->
+      <!--Detalle  -->
       <div class="flex flex-col col-span-2">
         <label class="label text-sm font-semibold">{{translate.t('reclamoForm.detalle')}}</label>
-        <textarea class="textarea textarea-sm textarea-bordered w-full" formControlName="desc"></textarea>
+        <textarea class="textarea textarea-sm textarea-bordered w-full validator"
+        [class.input-success]="f.detalle.valid && f.detalle.touched && !f.detalle.pristine"
+        [class.input-error]="f.detalle.invalid && f.detalle.touched"formControlName="detalle"></textarea>
+        @if (f.detalle.invalid && f.detalle.touched) {
+        <div class="text-error text-xs mt-1 flex items-center gap-1">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd"
+              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+              clip-rule="evenodd"></path>
+          </svg>
+          {{ f.detalle.errors?.['required'] ? translate.t('reservaForm.errors.required') : '' }}
+        </div>
+        }
       </div>
       <div class="flex flex-col col-span-2">
         <label class="label text-sm font-semibold">{{translate.t('reclamoForm.pedidoConsumidor')}}</label>

@@ -221,15 +221,23 @@
     "tipo": "Type",
     "reclamo": "Claim",
     "queja": "Complaint",
-    "detalle": "Details",
+    "detalle": "Claim Details",
     "pedidoConsumidor": "Consumer Request",
     "consentimiento1": "I declare that the data provided are true and authorize the processing of my personal data in accordance with Law No. 29733.",
     "consentimiento2": "I agree to receive responses by electronic means.",
+    "btnAnterior": "Back",
     "btnSiguiente": "Next",
     "btnEditar": "Edit",
     "btnEnviar": "Submit claim",
     "codigoUnico": "Clame Code",
-    "mensajeExito": "✅ Claim sent successfully. You will receive a copy by email."
+    "mensajeExito": "✅ Claim sent successfully. You will receive a copy by email.",
+    "errors": {
+      "required": "This field is required",
+      "nameMin": "Must be at least 2 characters",
+      "messageMin": "Must be at least 10 characters",
+      "email": "Please enter a valid email address",
+      "phone": "Must contain only numbers (9 or 10 digits)"
+    }
   },
   "reclamoPage": {
     "title": "Virtual Complaints Book",

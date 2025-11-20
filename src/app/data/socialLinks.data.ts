@@ -5,7 +5,7 @@ import { SocialLinks } from "../interfaces/SocialLinks";
 export const SOCIALLINKS_DATA: SocialLinks[] = [
   {
     name: 'Instagram',
-    url: 'https://instagram.com/mauriciovereau.dev',
+    url: 'https://instagram.com/',
     icon: faInstagram,
     gradient: 'linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)',
     desc: 'redes.instagram'

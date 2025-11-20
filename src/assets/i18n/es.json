@@ -221,15 +221,23 @@
     "tipo": "Tipo",
     "reclamo": "Reclamo",
     "queja": "Queja",
-    "detalle": "Detalle",
+    "detalle": "Detalle del reclamo",
     "pedidoConsumidor": "Pedido del consumidor",
     "consentimiento1": "Declaro que los datos consignados son veraces y autorizo el tratamiento de mis datos personales conforme a la Ley N° 29733.",
     "consentimiento2": "Acepto recibir respuesta por medios electrónicos.",
+    "btnAnterior": "Anterior",
     "btnSiguiente": "Siguiente",
     "btnEditar": "Editar",
     "btnEnviar": "Enviar reclamo",
     "codigoUnico": "Código del Reclamo",
-    "mensajeExito": "✅ Reclamo enviado correctamente. Recibirás una copia por correo electrónico."
+    "mensajeExito": "✅ Reclamo enviado correctamente. Recibirás una copia por correo electrónico.",
+    "errors": {
+      "required": "Este campo es obligatorio",
+      "nameMin": "Debe tener al menos 2 caracteres",
+      "messageMin": "Debe tener al menos 10 caracteres",
+      "email": "Por favor, ingresa un correo electrónico válido",
+      "phone": "Debe contener solo números (9 o 10 dígitos)"
+    }
   },
   "reclamoPage":{
     "title": "Libro de Reclamaciones Virtual",
